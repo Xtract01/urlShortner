@@ -1,15 +1,14 @@
-import axios from "axios";
 import React from "react";
 import { useState } from "react";
+import { createShortUrl } from "../api/shortUrl.api";
 
 const UrlForm = () => {
   const [url, setUrl] = useState("https://www.google.com");
   const [shortUrl, setShortUrl] = useState("");
+
   const handleSubmit = async () => {
-    const { data } = await axios.post("http://localhost:3000/api/create", {
-      url,
-    });
-    setShortUrl(data);
+    const shortUrl = await createShortUrl(url);
+    setShortUrl(shortUrl);
   };
   return (
     <div className="flex flex-col gap-3">
