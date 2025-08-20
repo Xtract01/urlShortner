@@ -6,6 +6,7 @@ import urlSchema from "./src/models/shorturl.model.js";
 import shorturl from "./src/routes/shorturl.route.js";
 import { redirectFromShortUrl } from "./src/controller/shorturl.controller.js";
 import { errorHandler } from "./src/utils/errorHandler.js";
+import authRoutes from "./src/routes/auth.route.js";
 import cors from "cors";
 dotenv.config("./.env");
 const app = express();
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/create", shorturl);
+app.use("/api/auth", authRoutes);
 app.get("/:id", redirectFromShortUrl);
 app.use(errorHandler);
 app.listen(3000, () => {
