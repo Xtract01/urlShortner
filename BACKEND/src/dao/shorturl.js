@@ -5,7 +5,7 @@ export const saveShortUrl = async (shortUrl, longUrl, userId) => {
       full_url: longUrl,
       short_url: shortUrl,
     });
-    if (userId) newUrl.userId = userId;
+    if (userId) newUrl.user = userId;
     await newUrl.save();
   } catch (error) {
     if (error.code == 11000) {
@@ -19,4 +19,7 @@ export const getShortUrl = async (shortUrl) => {
     { short_url: shortUrl },
     { $inc: { clicks: 1 } }
   );
+};
+export const getCustomShortUrl = async (slug) => {
+  return await urlSchema.findOne({ short_url: slug });
 };
