@@ -2,8 +2,9 @@ import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 
 export const findUserByEmail = async (email) => {
-  return await User.findOne({ email });
+  return await User.findOne({ email }).select("+password");
 };
+
 export const findUserById = async (id) => {
   return await User.findById(id);
 };

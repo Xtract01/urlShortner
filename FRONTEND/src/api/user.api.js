@@ -1,13 +1,13 @@
-import axiosInstance from "../utils/axiosinstance";
+import axiosInstance from "../utils/axiosInstance";
 export const loginUser = async (email, password) => {
-  const { data } = await axiosInstance.post("/auth/auth/login", {
+  const { data } = await axiosInstance.post("/api/auth/login", {
     email,
     password,
   });
   return data;
 };
 export const registerUser = async (name, email, password) => {
-  const { data } = await axiosInstance.post("/auth/auth/register", {
+  const { data } = await axiosInstance.post("/api/auth/register", {
     name,
     email,
     password,
@@ -15,6 +15,6 @@ export const registerUser = async (name, email, password) => {
   return data;
 };
 export const logoutUser = async () => {
-  const { data } = await axiosInstance.get("/auth/auth/logout");
+  const { data } = await axiosInstance.get("/api/auth/logout");
   return data;
 };

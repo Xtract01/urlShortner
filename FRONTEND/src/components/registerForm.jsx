@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import axios from "axios";
 const RegisterForm = ({ state }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,12 +11,23 @@ const RegisterForm = ({ state }) => {
     e.preventDefault();
     setLoading(true);
     setError("");
-    // Add your registration logic here
-    setTimeout(() => {
+
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/auth/register",
+        {
+          name,
+          email,
+          password,
+        }
+      );
+      alert(response.data.message);
+      state(true);
+    } catch (err) {
+      setError(err.response?.data?.message || "Registration failed");
+    } finally {
       setLoading(false);
-      // Simulate error for demo
-      // setError("Registration failed");
-    }, 1000);
+    }
   };
 
   return (
