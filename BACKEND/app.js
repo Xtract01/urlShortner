@@ -7,6 +7,7 @@ import shorturl from "./src/routes/shorturl.route.js";
 import { redirectFromShortUrl } from "./src/controller/shorturl.controller.js";
 import { errorHandler } from "./src/utils/errorHandler.js";
 import authRoutes from "./src/routes/auth.route.js";
+import userRoutes from "./src/routes/user.route.js";
 import cors from "cors";
 import { attachUser } from "./src/utils/attachUser.js";
 import cookieParser from "cookie-parser";
@@ -24,6 +25,7 @@ app.use(cookieParser());
 app.use(attachUser);
 app.use("/api/create", shorturl);
 app.use("/api/auth", authRoutes);
+app.use("/api/user", userRoutes);
 app.get("/:id", redirectFromShortUrl);
 app.use(errorHandler);
 app.listen(3000, () => {

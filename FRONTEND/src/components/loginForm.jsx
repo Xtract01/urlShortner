@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-import { loginUser } from "../api/user.api";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../store/slice/authSlice.js";
 import { useNavigate } from "@tanstack/react-router";
 import axios from "axios";
 
 const LoginForm = ({ state }) => {
-  const [email, setEmail] = useState("abc@gmail.com");
-  const [password, setPassword] = useState("1234");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth);
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -20,10 +18,8 @@ const LoginForm = ({ state }) => {
     try {
       const response = await axios.post(
         "http://localhost:3000/api/auth/login",
-        {
-          email,
-          password,
-        }
+        { email, password },
+        { withCredentials: true }
       );
       dispatch(login(response.data.user));
       navigate({ to: "/dashboard" });
