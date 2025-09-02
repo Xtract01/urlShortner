@@ -1,5 +1,5 @@
 import React from "react";
-import LoginForm from "../components/LoginForm";
+import LoginForm from "../components/LoginForm.jsx";
 import RegisterForm from "../components/registerForm";
 import { useState } from "react";
 
