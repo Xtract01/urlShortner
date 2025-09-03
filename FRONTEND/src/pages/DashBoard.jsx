@@ -1,6 +1,6 @@
 import React from "react";
-import UrlForm from "../components/urlForm";
-import UserUrl from "../components/Userurl";
+import UrlForm from "@/components/Urlform.jsx";
+import UserUrl from "../components/Userurl.jsx";
 const DashBoard = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
