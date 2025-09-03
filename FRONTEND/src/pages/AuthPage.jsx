@@ -1,8 +1,7 @@
 import React from "react";
-import LoginForm from ".@/components/LoginForm.jsx";
-import RegisterForm from "@/components/RegisterForm.jsx";
 import { useState } from "react";
-
+import LoginForm from "../components/LoginForm.jsx";
+import RegisterForm from "../components/RegisterForm.jsx";
 const AuthPage = () => {
   const [login, setlogin] = useState(true);
   return (
