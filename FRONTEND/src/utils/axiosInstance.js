@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "/api",
   timeout: 10000,
   withCredentials: true,
 });
@@ -26,7 +26,7 @@ axiosInstance.interceptors.response.use(
         message: error.message,
       });
     }
-  }
+  },
 );
 
 export default axiosInstance;
